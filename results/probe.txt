@@ -1,0 +1,18 @@
+runtime 10.0.12
+null => Usage: todo add <title> | done <id> | tag <id> <tag>... [same]
+empty array => Usage: todo add <title> | done <id> | tag <id> <tag>... [same]
+add milk => Add task: milk [same]
+ADD milk (upper case) => Unknown or incomplete command: ADD [same]
+U+FF41 dd milk (fullwidth a) => Unknown or incomplete command: ａdd [same]
+' add' milk (leading space) => Unknown or incomplete command:  add [same]
+add (no title) => Unknown or incomplete command: add [same]
+add milk now (one word too many) => Unknown or incomplete command: add [same]
+add --help x (--help not last) => Unknown or incomplete command: add [same]
+add --help (--help last) => Usage: todo add <title> | done <id> | tag <id> <tag>... [same]
+done abc (id is not a number) => Complete task abc [same]
+tag 7 (no tags) => Unknown or incomplete command: tag [same]
+tag 7 home urgent => Tag task 7: home, urgent [same]
+[null] (null element) => Unknown or incomplete command:  [same]
+add null (null title) => Add task:  [same]
+array slice of 1000000 tags: 8000024 bytes allocated
+span slice of 1000000 tags: 0 bytes allocated
