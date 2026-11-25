@@ -24,8 +24,9 @@ public static string Describe(string[]? args) => args switch
 - A slice matches zero or more elements. `.. { Length: > 0 } tags` asks for at least one tag.
 - String constants in a pattern are compared ordinally: `ADD` and a fullwidth `add` do not match `add`.
 - `var` accepts a `null` element.
-- Without the `null` arm the compiler warns (CS8655) and a `null` input throws
-  `SwitchExpressionException`.
+- The `null or []` arm is needed: a list pattern never matches `null`, and no other arm accepts an
+  empty list. Without that arm the compiler warns with CS8509 and a `null` or empty input throws
+  `SwitchExpressionException`. If only `null` is missing (`[] => ...`), the warning is CS8655.
 - On an array, a slice with a designation (`.. var tags`) is a **new array**: on 1,000,000 tags it
   allocated 8,000,024 bytes. The same pattern over a `ReadOnlySpan<string>` allocated 0 bytes
   (see `results/probe.txt`).

@@ -4,4 +4,4 @@ Test run summary: Passed!
   failed: 0
   succeeded: 23
   skipped: 0
-  duration: 1s 216ms
+  duration: 1s 380ms
